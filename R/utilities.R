@@ -20,10 +20,12 @@ CompareMarkersByPublicDB <- function(
     
     df <- NULL
     for (x in unique(data$cluster)){
+        print(x)
         geneset <- data$gene[data$cluster == x]
+        print(length(geneset))
 
         for (ct in unique(d_db[[col_ct]])){
-            markers <- d_db[[col_gene]][d_db[[col_ct]] == ct]
+            markers <- d_db[[col_gene]][ d_db[[col_ct]] == ct ]
             markers <- str_split(markers, ',')[[1]]
             overlap_genes <- intersect(geneset, markers)
             geneSymbol <- paste(overlap_genes, collapse = ",")
@@ -37,10 +39,10 @@ CompareMarkersByPublicDB <- function(
     }
 
     df <- as.data.frame(df)
+    print(din(df))
 
     # show top10
     d_topX <- df %>% group_by(cluster) %>% arrange(desc(as.numeric(geneCount))) %>% slice_head(n = n)
-
 
     return(d_topX)
 }
