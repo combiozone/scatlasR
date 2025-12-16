@@ -13,7 +13,7 @@ CompareMarkersByPublicDB <- function(
     data=NULL, 
     fdb=NULL,
     col_ct='cellName',
-    col_gene='geneSymbol',
+    col_gene='geneSymbol'
     n = 10
 ) { 
     d_db <- readxl::read_excel(fdb)
@@ -42,10 +42,11 @@ CompareMarkersByPublicDB <- function(
     print(dim(df))
 
     # show top10
-    d_topX <- df %>% filter(geneCount>1) %>% group_by(cluster) %>% arrange(desc(as.numeric(geneCount))) %>% slice_head(n = n)
+    #d_topX <- df %>% filter(geneCount>1) %>% group_by(cluster) %>% arrange(desc(as.numeric(geneCount))) %>% slice_head(n = n)
+    d_topX <- df %>% filter(geneCount>1) %>% group_by(cluster) %>% arrange(desc(as.numeric(geneCount)))
     print(dim(d_topX))
 
-    return(d_topX)
+    return(df)
 }
 
 
