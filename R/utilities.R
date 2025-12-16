@@ -46,7 +46,7 @@ CompareMarkersByPublicDB <- function(
     d_topX <- df %>% filter(geneCount>1) %>% group_by(cluster) %>% arrange(desc(as.numeric(geneCount)))
     print(dim(d_topX))
 
-    return(df)
+    return(d_topX)
 }
 
 
