@@ -3,9 +3,8 @@
 # v3.2 2024-07-26 (Updated to support Seurat v4 & v5)
 
 
-library(dplyr)
-library(HGNChelper)
-library(readxl)
+#library(dplyr)
+#library(HGNChelper)
 
 
 
@@ -186,7 +185,7 @@ ScTypeAnnotation <- function(obj, assay, reduction, f_marker_db, tissue, out_pat
     # cell types on UMAP plot
     obj$cell_type = ""
     obj$cell_type2 = ""
-    marker_db <- read_excel(f_marker_db)
+    marker_db <- readxl::read_excel(f_marker_db)
     for(j in unique(sctype_scores$cluster)){
         # add cell type
         celltype = as.character(sctype_scores$type[sctype_scores$cluster==j][1])
