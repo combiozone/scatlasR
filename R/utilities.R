@@ -42,7 +42,7 @@ CompareMarkersByPublicDB <- function(
     print(dim(df))
 
     # show top10
-    d_topX <- df %>% group_by(cluster) %>% arrange(desc(as.numeric(geneCount))) %>% slice_head(n = n)
+    d_topX <- df %>% filter(geneCount>1) %>% group_by(cluster) %>% arrange(desc(as.numeric(geneCount))) %>% slice_head(n = n)
     print(dim(d_topX))
 
     return(d_topX)
