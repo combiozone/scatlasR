@@ -13,7 +13,7 @@ CompareMarkersByPublicDB <- function(
     data=NULL, 
     fdb=NULL,
     col_ct='cellName',
-    col_gene='geneSymbol'
+    col_gene='geneSymbol',
     n = 10
 ) { 
     d_db <- readxl::read_excel(fdb)
